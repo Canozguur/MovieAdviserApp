@@ -1,34 +1,23 @@
 //
-//  MovieAdvicingView.swift
+//  ActorMoviesListView.swift
 //  Movie Adviser
 //
-//  Created by Can Özgür on 7.07.2024.
+//  Created by Can Özgür on 10.07.2024.
 //
 
 import SwiftUI
 
-struct MovieAdvicingView: View {
+struct ActorMoviesListView: View {
+
     @StateObject private var movieService = MovieService()
-    var category : String
+    var actorName : String
     
     var body: some View {
         VStack{
-            HStack{
-                Text("\(category)")
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .bold()
-                Spacer()
-                Text("See All")
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.blue)
-                
-            }.padding()
-                .background(Color.black)
             
             ScrollView(.horizontal){
                 HStack{
-                    ForEach(movieService.moviesByCategory[category] ?? [],id: \.self) { movie in
+                    ForEach(movieService.actorMovies[actorName] ?? [],id: \.self) { movie in
                         NavigationLink(value:movie) {
                             MovieSelectionView(movie: movie)
                                 .padding(.horizontal, 8)
@@ -39,16 +28,11 @@ struct MovieAdvicingView: View {
                     }
                 
                 }
-                
             }
         }
     }
 }
 
-
-
-
-
 #Preview {
-    MovieAdvicingView(category: "Action")
+    ActorMoviesListView(actorName:"James Cameron")
 }

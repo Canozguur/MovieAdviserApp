@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieDetailView: View {
     var movie : Movie
-    
+    @StateObject private var movieService = MovieService()
     @State var isLiked : Bool
     @State var isDisliked : Bool
     @State var isDowlondad : Bool
@@ -214,7 +214,10 @@ struct MovieDetailView: View {
                 
                 ScrollView(.horizontal){
                     HStack{
-                        MovieActorsView(name: "Michelle", surname: "Rodrigez", job: "Actor")
+                        
+                        MovieActorsView(name: String(movie.director.split(separator: " ")[0]), surname: String(movie.director.split(separator: " ")[1]), job: "Director")
+                            
+                        
                         MovieActorsView(name: "Sam", surname: "Worthington", job: "Actor")
                         
                         MovieActorsView(name: "Michelle", surname: "Rodrigez", job: "Actor")

@@ -47,6 +47,7 @@ struct TopHeader: View {
                             Rectangle()
                                 .frame(width: 180,height: 40)
                                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                                .foregroundStyle(.blue)
                             Text("Watch Now")
                                 .foregroundStyle(.white)
                                 .bold()

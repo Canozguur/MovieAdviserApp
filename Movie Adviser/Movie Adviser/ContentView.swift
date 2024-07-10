@@ -4,6 +4,7 @@
 //
 //  Created by Can Özgür on 7.07.2024.
 //
+// Dark Purple Color(red: 48/255, green: 25/255, blue: 52/255)
 
 import SwiftUI
 
@@ -25,11 +26,14 @@ struct ContentView: View {
                     
                 }
                 
+                
             }
             .ignoresSafeArea()
-            .background(Color.black)
+            .preferredColorScheme(.dark)
+            .navigationBarTitleDisplayMode(.inline)
             
-        }
+        }.tint(.white)
+        
         
     }
 

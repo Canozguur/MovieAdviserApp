@@ -11,7 +11,21 @@ import SwiftUI
 struct Movie_AdviserApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                ContentView()
+                    .tabItem {
+                        Label("Main", systemImage: "house")
+                    }
+                MainSearchView()
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                MainProfileView()
+                    .tabItem {
+                        Label("Account", systemImage: "person.crop.circle.fill")
+                    }
+                
+            }
         }
     }
 }

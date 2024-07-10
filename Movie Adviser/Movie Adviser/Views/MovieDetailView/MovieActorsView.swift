@@ -13,16 +13,14 @@ struct MovieActorsView: View {
     var job : String
     var body: some View {
         VStack(alignment:.center){
-            ZStack{
-                Image("michelleRodriguez")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
-                    .clipShape(Circle())
-            }
-           
+            
+            Image("michelleRodriguez")
+                .resizable()
+                .scaledToFit()
                 .frame(height: 90)
-                .foregroundColor(.white)
+                .clipShape(Circle())
+
+            
             // jobs
             Text("\(job)")
                 .foregroundStyle(.white)
