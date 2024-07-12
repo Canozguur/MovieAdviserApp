@@ -4,17 +4,21 @@ Movie Adviser App
 -MOVIE DATA
 -USER DATA
 -ACTOR DATA
-
+- ADD Extensions For Colors
+- 
 - Main Movies Page ✅
 - Movie Page ✅
 - Actor Page ✅
 - Movie Search ✅
-- Movie See All Page
+- Movie Categories (See All) Page
 - Movie wacthing
 - Movie Trailer watching
 - User Profile Page ✅
-- Sign In Page
-- Sign Up Page
+- Open App Page ✅
+- Sign In Page ✅
+  - Add Model view Controller
+- Sign Up Page ✅
+  - Add Firebase 
 - User Settings Page  ✅
   -   Language
   -   Dark Mode
@@ -22,4 +26,6 @@ Movie Adviser App
   -   Notificatin
   -   Subscription
       - Subs Page
-  -   
+- Saved Moviees ( Favoruites )
+- Dowloaded Movies
+- 
