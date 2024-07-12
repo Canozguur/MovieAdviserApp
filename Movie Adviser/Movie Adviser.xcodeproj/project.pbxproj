@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2135AC512C41C526002C5804 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135AC502C41C526002C5804 /* SignInView.swift */; };
+		2135AC532C41CE0A002C5804 /* SignInMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135AC522C41CE0A002C5804 /* SignInMainView.swift */; };
+		2135AC562C41DA13002C5804 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2135AC552C41DA12002C5804 /* SignUpView.swift */; };
 		21AD902E2C3EC34B00910FC1 /* MainSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD902D2C3EC34B00910FC1 /* MainSearchView.swift */; };
 		21AD90302C3ED2EC00910FC1 /* SearhingMovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD902F2C3ED2EC00910FC1 /* SearhingMovieRowView.swift */; };
 		21AD90322C3ED97D00910FC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AD90312C3ED97D00910FC1 /* User.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2135AC502C41C526002C5804 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		2135AC522C41CE0A002C5804 /* SignInMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInMainView.swift; sourceTree = "<group>"; };
+		2135AC552C41DA12002C5804 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		21AD902D2C3EC34B00910FC1 /* MainSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchView.swift; sourceTree = "<group>"; };
 		21AD902F2C3ED2EC00910FC1 /* SearhingMovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearhingMovieRowView.swift; sourceTree = "<group>"; };
 		21AD90312C3ED97D00910FC1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -101,6 +107,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2135AC4F2C41C50E002C5804 /* SignInView */ = {
+			isa = PBXGroup;
+			children = (
+				2135AC502C41C526002C5804 /* SignInView.swift */,
+				2135AC522C41CE0A002C5804 /* SignInMainView.swift */,
+			);
+			path = SignInView;
+			sourceTree = "<group>";
+		};
+		2135AC542C41DA03002C5804 /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				2135AC552C41DA12002C5804 /* SignUpView.swift */,
+			);
+			path = SignUpView;
+			sourceTree = "<group>";
+		};
 		21AD902C2C3EC33900910FC1 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +203,8 @@
 		21CB2CE92C3B1062009405BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2135AC542C41DA03002C5804 /* SignUpView */,
+				2135AC4F2C41C50E002C5804 /* SignInView */,
 				21AD90332C3EED6200910FC1 /* ProfileView */,
 				21AD902C2C3EC33900910FC1 /* SearchView */,
 				21CB2D032C3DDD41009405BE /* ActorDetailView */,
@@ -364,9 +389,12 @@
 				21CB2D052C3DDD5A009405BE /* MainActorView.swift in Sources */,
 				21AD902E2C3EC34B00910FC1 /* MainSearchView.swift in Sources */,
 				21AD90302C3ED2EC00910FC1 /* SearhingMovieRowView.swift in Sources */,
+				2135AC562C41DA13002C5804 /* SignUpView.swift in Sources */,
 				21CB2CED2C3B15AE009405BE /* MovieSelectionView.swift in Sources */,
+				2135AC512C41C526002C5804 /* SignInView.swift in Sources */,
 				21CB2D072C3DE1CA009405BE /* ActorMoviesListView.swift in Sources */,
 				21CB2CFD2C3D793E009405BE /* Movie.swift in Sources */,
+				2135AC532C41CE0A002C5804 /* SignInMainView.swift in Sources */,
 				21CB2CF62C3B3A9B009405BE /* MoviesCategoryView.swift in Sources */,
 				21AD90322C3ED97D00910FC1 /* User.swift in Sources */,
 				21CB2D022C3D7DD3009405BE /* MovieService.swift in Sources */,
