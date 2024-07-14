@@ -26,6 +26,9 @@ Movie Adviser App
   -   Notificatin
   -   Subscription
       - Subs Page
-- Saved Moviees ( Favoruites )
-- Dowloaded Movies
+- Saved Moviees ( Favoruites ) View ✅
+- Randomize View
+- Dowloaded Movies View ✅
 - 
+- Adding Firebase
+https://www.youtube.com/watch?v=FSFB2CcV9iA&list=PLwvDm4Vfkdphl8ly0oi0aHx0v2B7UvDK0
