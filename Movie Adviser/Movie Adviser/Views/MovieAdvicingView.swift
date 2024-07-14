@@ -27,7 +27,7 @@ struct MovieAdvicingView: View {
                 .background(Color.black)
             
             ScrollView(.horizontal){
-                HStack{
+                LazyHStack{
                     ForEach(movieService.moviesByCategory[category] ?? [],id: \.self) { movie in
                         NavigationLink(value:movie) {
                             MovieSelectionView(movie: movie)

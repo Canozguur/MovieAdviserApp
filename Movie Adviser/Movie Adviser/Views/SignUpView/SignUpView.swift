@@ -14,6 +14,7 @@ struct SignUpView: View {
     @State private var username : String = ""
     @State private var email : String = ""
     @State private var password : String = ""
+    @State private var rePassword : String = ""
     @State private var isRememberUser: Bool = false
     var body: some View {
         VStack(alignment:.center, spacing: 20){
@@ -46,7 +47,7 @@ struct SignUpView: View {
                 .cornerRadius(10)
                 .padding(.horizontal,24)
             // Confirm Password
-            SecureField("", text: $password ,prompt: Text("Confirm Password").foregroundStyle(.gray))
+            SecureField("", text: $rePassword ,prompt: Text("Confirm Password").foregroundStyle(.gray))
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(12)

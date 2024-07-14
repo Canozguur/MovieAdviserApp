@@ -13,8 +13,18 @@ struct SearhingMovieRowView: View {
     
     var body: some View {
         HStack(alignment:.top){
-            Rectangle()
-                .frame(width: 90,height: 110)
+            ZStack{
+                AsyncImage(url: URL(string: movie.photoURL)) { phase in
+                    if let image = phase.image {
+                        image.resizable()// Displays the loaded image.
+                    } else if phase.error != nil {
+                        Color.red // Indicates an error.
+                    } else {
+                        Color.blue // Acts as a placeholder.
+                    }
+                }
+            }
+            .frame(width: 90,height: 110)
             
             VStack(alignment:.leading,spacing: 10){
                 Text("\(movie.title)")

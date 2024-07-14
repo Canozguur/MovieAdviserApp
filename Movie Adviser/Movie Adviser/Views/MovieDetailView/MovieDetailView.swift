@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    // @EnvironmentObject var userManager : UserService
     var movie : Movie
     @StateObject private var movieService = MovieService()
     @State var isLiked : Bool
@@ -153,6 +154,7 @@ struct MovieDetailView: View {
                     Spacer()
                     HStack{
                         Button(action: {
+                            // indirilen film
                             isDowlondad.toggle()
                         }, label: {
                             ZStack{
@@ -170,6 +172,12 @@ struct MovieDetailView: View {
                         })
                         Button(action: {
                             isSaved.toggle()
+                            if isSaved {
+                            // KAYDET burasi filmin favori olan kismi
+                            } else {
+                             // kaydetme
+                            }
+                        
                         }, label: {
                             ZStack{
                                 Circle()
@@ -238,4 +246,6 @@ struct MovieDetailView: View {
 
 #Preview {
     MovieDetailView(movie:Movie.sampleMovie , isLiked: false, isDisliked: false, isDowlondad: false, isSaved: false, isSended: false)
+        //.environmentObject(UserService(user: User.sampleUser))
 }
+

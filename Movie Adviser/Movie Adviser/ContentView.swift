@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             ScrollView(.vertical){
-                VStack {
+                    LazyVStack {
                     TopHeader(name: "Avatar", imdb: 8.7,isSaved: false)
                     
                     ForEach(movieService.moviesByCategory.keys.sorted(), id: \.self) { category in

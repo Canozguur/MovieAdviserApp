@@ -16,9 +16,15 @@ struct Movie_AdviserApp: App {
                     .tabItem {
                         Label("Main", systemImage: "house")
                     }
+                    
                 MainSearchView()
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
+                    }
+                FavoruiteView()
+                    
+                    .tabItem {
+                        Label("FavList", systemImage: "heart.fill")
                     }
                 MainProfileView()
                     .tabItem {

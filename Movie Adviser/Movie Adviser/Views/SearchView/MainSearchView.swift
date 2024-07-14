@@ -16,18 +16,20 @@ struct MainSearchView: View {
         NavigationStack{
             ScrollView(.vertical) {
                 // Top Searching Bar
-                ExtractedView(textField: $textField, isSearching: $isSearching)
-                
-                ForEach(allMovies.prefix(30).filter({"\($0)".contains(textField) || textField.isEmpty}),id:\.self) { movie in
+                LazyVStack{
+                    ExtractedView(textField: $textField, isSearching: $isSearching)
                     
-                    NavigationLink(value: movie) {
+                    ForEach(allMovies.prefix(30).filter({"\($0)".contains(textField) || textField.isEmpty}),id:\.self) { movie in
                         
-                        SearhingMovieRowView(movie: movie)
-                    }.navigationDestination(for: Movie.self) { movie in
-                        MovieDetailView(movie: movie, isLiked: false, isDisliked: false, isDowlondad: false, isSaved: false, isSended: false)
+                        NavigationLink(value: movie) {
+                            
+                            SearhingMovieRowView(movie: movie)
+                        }.navigationDestination(for: Movie.self) { movie in
+                            MovieDetailView(movie: movie, isLiked: false, isDisliked: false, isDowlondad: false, isSaved: false, isSended: false)
+                        }
+                        
+                        
                     }
-                   
-                    
                 }
             }
         }
