@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FavoruiteView: View {
     // @StateObject private var userService = UserService(user: User.sampleUser)
-    private var user : User = User.sampleUser
+    private var user : User1 = User1.sampleUser
     private var allMovies : [Movie] = Movie.allMovie
     private var first10Movies : [Movie] {
         return Array(allMovies.prefix(10))
@@ -44,7 +44,7 @@ struct FavoruiteView: View {
                             }
                         }
                         NavigationLink(destination: {
-                            DownloadedView(movies: User.sampleUser.movieDowlondadList)
+                            DownloadedView(movies: User1.sampleUser.movieDowlondadList)
                         }, label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 25.0)
@@ -71,7 +71,7 @@ struct FavoruiteView: View {
                     LazyVGrid(columns: columns){
                         ForEach(first10Movies, id: \.self){ movie in
                             
-                            FavoruiteMovieItem(user: User.sampleUser ,movie: movie, isDowloaded: false)
+                            FavoruiteMovieItem(user: User1.sampleUser ,movie: movie, isDowloaded: false)
                         }
                         
                     }.padding(.horizontal)

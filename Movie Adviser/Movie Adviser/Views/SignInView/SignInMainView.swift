@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct SignInMainView: View {
-    private var capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
+    
+    
+    let capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
+    
+    @Binding var showSignInView: Bool
+    
     var body: some View {
         NavigationStack {
             HStack{
@@ -24,7 +29,7 @@ struct SignInMainView: View {
             Spacer()
             // Sign in with password Button
             NavigationLink(
-                destination: SignInView(),
+                destination: SignInView(showSignInView: $showSignInView),
                 label: {
                     ZStack{
                         Capsule()
@@ -61,7 +66,7 @@ struct SignInMainView: View {
             }.padding(.bottom,70)
             
             NavigationLink(
-                destination: SignUpView(),
+                destination: SignUpView(showSignInView: $showSignInView),
                 label: {
                     Text("Don`t have an account? ")
                         .font(.caption)
@@ -74,7 +79,8 @@ struct SignInMainView: View {
                     
                         .fontWeight(.semibold)
                     
-                })
+                }
+            )
                 
             
             
@@ -85,5 +91,5 @@ struct SignInMainView: View {
 
 
 #Preview {
-    SignInMainView().preferredColorScheme(.dark)
+    SignInMainView(showSignInView: .constant(false)).preferredColorScheme(.dark)
 }

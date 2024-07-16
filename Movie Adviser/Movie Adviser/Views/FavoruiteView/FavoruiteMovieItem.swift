@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoruiteMovieItem: View {
-    var user : User
+    var user : User1
     // @EnvironmentObject var userManager : UserService
     var movie : Movie
     
@@ -66,5 +66,5 @@ struct FavoruiteMovieItem: View {
 }
 
 #Preview {
-    FavoruiteMovieItem(user: User.sampleUser, movie: Movie.sampleMovie, isDowloaded: true)
+    FavoruiteMovieItem(user: User1.sampleUser, movie: Movie.sampleMovie, isDowloaded: true)
 }

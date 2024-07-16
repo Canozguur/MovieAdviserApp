@@ -6,32 +6,43 @@
 //
 
 import SwiftUI
-
+import Firebase
 @main
 struct Movie_AdviserApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @State private var showSignInView : Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            TabView {
-                ContentView()
-                    .tabItem {
-                        Label("Main", systemImage: "house")
-                    }
+            ZStack{
+                if !showSignInView {
+                    TabBarView(showSignInView: $showSignInView)
                     
-                MainSearchView()
-                    .tabItem {
-                        Label("Search", systemImage: "magnifyingglass")
-                    }
-                FavoruiteView()
                     
-                    .tabItem {
-                        Label("FavList", systemImage: "heart.fill")
-                    }
-                MainProfileView()
-                    .tabItem {
-                        Label("Account", systemImage: "person.crop.circle.fill")
-                    }
-                
+                }
             }
+            
+            .onAppear{
+                let authUser = try?AuthenticationManager.shared.getAuthenticationUser()
+                print(showSignInView)
+                self.showSignInView = (authUser == nil)
+                print(showSignInView)
+            }.fullScreenCover(isPresented: $showSignInView){
+                SignInMainView(showSignInView: $showSignInView)
+
+                //
+            }
+            
         }
+        
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+            FirebaseApp.configure()
+    return true
+        
     }
 }

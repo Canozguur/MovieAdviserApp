@@ -7,13 +7,24 @@
 
 import SwiftUI
 
+
+@MainActor
+final class ProfileViewModel: ObservableObject {
+    @Published private(set) var user: DBUser? = nil
+    
+    func loadCurrentUser() async throws {
+        let authDataResult = try AuthenticationManager.shared.getAuthenticationUser()
+        self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+    }
+}
 struct MainProfileView: View {
     
     @State private var isDarkMode = false
     @State private var isUseWifi = false
     @State private var isNotification = false
     
-    private var capsuleColor = Color(red: 40 / 255, green: 48 / 255 , blue: 61 / 255)
+    let capsuleColor = Color(red: 40 / 255, green: 48 / 255 , blue: 61 / 255)
+    @Binding var showSignInView : Bool
     var body: some View {
    
         VStack(alignment:.leading,spacing: 16){
@@ -169,13 +180,27 @@ struct MainProfileView: View {
 
             //---SUBSCRIPTION
             Spacer()
+            
+            Button(action: {
+                do{
+                    try AuthenticationManager.shared.signOut()
+                        showSignInView = true
+                }
+                catch{
+                    
+                }
+            }, label: {
+               Text("LogOut")
+                    .font(.title)
+            })
         }
     }
+    
 }
     
 
 
 
 #Preview {
-    MainProfileView().preferredColorScheme(.dark)
+    MainProfileView(showSignInView: .constant(false)).preferredColorScheme(.dark)
 }

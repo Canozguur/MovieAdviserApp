@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieAdvicingView: View {
+    @State private var isLoading = false
     @StateObject private var movieService = MovieService()
     var category : String
     
@@ -28,22 +29,26 @@ struct MovieAdvicingView: View {
             
             ScrollView(.horizontal){
                 LazyHStack{
+                    
                     ForEach(movieService.moviesByCategory[category] ?? [],id: \.self) { movie in
+                        
                         NavigationLink(value:movie) {
                             MovieSelectionView(movie: movie)
                                 .padding(.horizontal, 8)
                         }.navigationDestination(for: Movie.self){ movie in  MovieDetailView(movie: movie, isLiked: false, isDisliked: false, isDowlondad: false, isSaved: false, isSended: false)
                         }
                             
-                      
+                            
                     }
-                
+                    // listin bittin yer
                 }
-                
             }
+            
         }
     }
 }
+    
+
 
 
 

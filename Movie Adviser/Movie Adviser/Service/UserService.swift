@@ -8,9 +8,9 @@
 import Foundation
 
 class UserService: ObservableObject {
-    @Published private var user: User
+    @Published private var user: User1
     
-    init(user: User) {
+    init(user: User1) {
         self.user = user
        
     }

@@ -9,13 +9,17 @@ import SwiftUI
 
 struct SignUpView: View {
     @Environment (\.dismiss) private var dismiss
+    @StateObject private var model = LoginModel()
     
-    private var capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
+    let capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
     @State private var username : String = ""
     @State private var email : String = ""
     @State private var password : String = ""
     @State private var rePassword : String = ""
     @State private var isRememberUser: Bool = false
+    
+    @Binding var showSignInView : Bool
+    
     var body: some View {
         VStack(alignment:.center, spacing: 20){
             Text("Create Your Account")
@@ -31,7 +35,7 @@ struct SignUpView: View {
                 .cornerRadius(10)
                 .padding(.horizontal,24)
             // Email Textfield
-            TextField("", text: $email,prompt: Text("Email").foregroundStyle(.gray))
+            TextField("", text: $model.email ,prompt: Text("Email").foregroundStyle(.gray))
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(12)
@@ -39,7 +43,7 @@ struct SignUpView: View {
                 .cornerRadius(10)
                 .padding(.horizontal,24)
             // Password Textfield
-            SecureField("", text: $password ,prompt: Text("Password").foregroundStyle(.gray))
+            SecureField("", text: $model.password ,prompt: Text("Password").foregroundStyle(.gray))
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(12)
@@ -59,15 +63,27 @@ struct SignUpView: View {
             Toggle(isOn: $isRememberUser) {
                 Text("Remember me")
             }.toggleStyle(iOSCheckboxToggleStyle())
-            // Sign in Button
+            // Sign Up Button
             Button(action: {
+                
+                    Task{
+                        do{
+                            
+                            try await model.signUp()
+                            
+                            showSignInView = false
+                            return
+                        }
+                        
+                        catch{}
+                    }
                 
             }, label: {
                 ZStack{
                     Capsule()
                         .frame(width: 300,height: 60)
                         .foregroundStyle(Color(capsuleColor))
-                    Text("Sign in ")
+                    Text("Sign Up ")
                         .foregroundStyle(.white)
                         .fontWeight(.semibold)
                 }
@@ -114,6 +130,7 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView().preferredColorScheme(.dark)
+    SignUpView(showSignInView: .constant(false)).preferredColorScheme(.dark)
 }
 
+ 

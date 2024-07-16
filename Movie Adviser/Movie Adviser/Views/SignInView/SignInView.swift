@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct SignInView: View {
-    private var capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
+    
+    @StateObject private var model = LoginModel()
+    let capsuleColor = Color(red: 98 / 255, green: 0 / 255 , blue: 175 / 255)
+    
     @State private var email : String = ""
     @State private var password : String = ""
     @State private var isRememberUser: Bool = false
+    
+    @Binding var showSignInView : Bool
     var body: some View {
         VStack(alignment:.center, spacing: 20){
             Text("Login to Your Account")
@@ -19,7 +24,7 @@ struct SignInView: View {
                 .fontWeight(.bold)
             Spacer()
             // Email Textfield
-            TextField("", text: $email,prompt: Text("Email").foregroundStyle(.gray))
+            TextField("", text: $model.email,prompt: Text("Email").foregroundStyle(.gray))
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(12)
@@ -27,7 +32,7 @@ struct SignInView: View {
                 .cornerRadius(10)
                 .padding(.horizontal,24)
             // Password Textfield
-            SecureField("", text: $password ,prompt: Text("Password").foregroundStyle(.gray))
+            SecureField("", text: $model.password ,prompt: Text("Password").foregroundStyle(.gray))
                 .font(.subheadline)
                 .foregroundStyle(.gray)
                 .padding(12)
@@ -40,7 +45,17 @@ struct SignInView: View {
             }.toggleStyle(iOSCheckboxToggleStyle())
             // Sign in Button
             Button(action: {
-                
+                // signIn
+                Task{
+                    do {
+                        try await model.signIn()
+                        showSignInView = false
+                        return
+                    }
+                    catch{
+                        print(error)
+                    }
+                }
             }, label: {
                 ZStack{
                     Capsule()
@@ -81,7 +96,7 @@ struct SignInView: View {
             }.padding(.bottom,70)
             
             NavigationLink(
-                destination: SignUpView(),
+                destination: SignUpView(showSignInView: $showSignInView),
                 label: {
                     Text("Don`t have an account? ")
                         .font(.caption)
@@ -100,7 +115,9 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView().preferredColorScheme(.dark)
+    NavigationStack{
+        SignInView(showSignInView:.constant(false)).preferredColorScheme(.dark)
+    }
 }
 
 struct iOSCheckboxToggleStyle: ToggleStyle {
